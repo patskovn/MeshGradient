@@ -102,7 +102,7 @@ public struct MeshGradient: UIViewRepresentable {
 
 import AppKit
 
-public struct AnimatableMeshGradient: NSViewRepresentable {
+public struct MeshGradient: NSViewRepresentable {
 	
 	private let state: MeshGradientState
 	private let subdivisions: Int
