@@ -66,7 +66,7 @@ kernel void shuffleCoefficients(device const MeshControlPoint* inVertices [[buff
     uint x = index.x;
     uint y = index.y;
     
-    uint i = index.y + index.x * (width - 1);
+    uint i = index.x + index.y * (width - 1);
     
     MeshControlPoint p00 = meshControlPoint(inVertices,     x,     y, width);
     MeshControlPoint p01 = meshControlPoint(inVertices,     x, y + 1, width);

@@ -15,8 +15,6 @@ public struct Grid<Element> {
         self.width = width
         self.height = height
         self.elements = ContiguousArray(repeating: element, count: width * height)
-        
-        assert(width == height, "Non uniform mesh is not supported")
     }
 	
 	public init(width: Int, array: () -> [Element]) {
