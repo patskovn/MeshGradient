@@ -39,8 +39,8 @@ func generatePlainGrid(size: Int = 6) -> Grid<ControlPoint> {
   var result = MeshGenerator.generate(colorDistribution: preparationGrid)
 
   // And here we shuffle the grid using randomizer that we created
-  for y in stride(from: 0, to: result.width, by: 1) {
-   for x in stride(from: 0, to: result.height, by: 1) {
+  for x in stride(from: 0, to: result.width, by: 1) {
+   for y in stride(from: 0, to: result.height, by: 1) {
     meshRandomizer.locationRandomizer(&result[x, y].location, x, y, result.width, result.height)
     meshRandomizer.turbulencyRandomizer(&result[x, y].uTangent, x, y, result.width, result.height)
     meshRandomizer.turbulencyRandomizer(&result[x, y].vTangent, x, y, result.width, result.height)
