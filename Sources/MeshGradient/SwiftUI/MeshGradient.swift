@@ -47,16 +47,17 @@ public struct MeshGradient: UIViewRepresentable {
         context.coordinator.renderer = .init(metalKitView: view, meshDataProvider: createDataProvider(), grainAlpha: grainAlpha, subdivisions: subdivisions)
 		
 		switch state {
-		case .animated:
+		case .animated(_, let configuration):
 			view.isPaused = false
 			view.enableSetNeedsDisplay = false
+            view.preferredFramesPerSecond = configuration.framesPerSecond
 		case .static:
 			view.isPaused = true
 			view.enableSetNeedsDisplay = true
+            view.preferredFramesPerSecond = 60
 		}
 		
 		view.delegate = context.coordinator.renderer
-		view.preferredFramesPerSecond = 60
 		return view
 	}
 	
@@ -130,16 +131,17 @@ public struct MeshGradient: NSViewRepresentable {
 		context.coordinator.renderer = .init(metalKitView: view, meshDataProvider: createDataProvider(), grainAlpha: grainAlpha, subdivisions: subdivisions)
 		
 		switch state {
-		case .animated:
+		case .animated(_, let configuration):
 			view.isPaused = false
 			view.enableSetNeedsDisplay = false
+            view.preferredFramesPerSecond = configuration.framesPerSecond
 		case .static:
 			view.isPaused = true
 			view.enableSetNeedsDisplay = true
+            view.preferredFramesPerSecond = 60
 		}
 		
 		view.delegate = context.coordinator.renderer
-		view.preferredFramesPerSecond = 60
 		return view
 	}
 	
