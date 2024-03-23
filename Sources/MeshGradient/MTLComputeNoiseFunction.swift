@@ -27,6 +27,10 @@ final class MTLComputeNoiseFunction {
         guard let commandBuffer = commandQueue.makeCommandBuffer() else { return nil }
         let width = Int(viewportSize.x)
         let height = Int(viewportSize.y)
+
+        if width == 0 || height == 0 {
+            return nil
+        }
         
         if let noiseTexture = _noiseTexture, noiseTexture.width == width, noiseTexture.height == height {
             return noiseTexture
