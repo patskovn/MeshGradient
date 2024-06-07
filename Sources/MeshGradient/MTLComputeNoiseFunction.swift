@@ -48,6 +48,11 @@ final class MTLComputeNoiseFunction {
         let threadgroups = MTLSize(width: noiseTexture.width / threadgroupCounts.width,
                                    height: noiseTexture.height / threadgroupCounts.height,
                                    depth: 1)
+
+        if threadgroups.height == 0 || threadgroups.width == 0 {
+            encoder.endEncoding()
+            return nil
+        }
         
         encoder.setComputePipelineState(pipelineState)
 
