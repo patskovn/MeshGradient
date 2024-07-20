@@ -8,7 +8,6 @@
 #ifndef MetalMeshShaderTypes_h
 #define MetalMeshShaderTypes_h
 
-#include <metal_stdlib>
 #include <simd/simd.h>
 // Buffer index values shared between shader and C code to ensure Metal shader buffer inputs
 // match Metal API buffer set calls.
@@ -79,8 +78,8 @@ typedef struct
     simd_float4x4 G;
     simd_float4x4 B;
     
-    uint x;
-    uint y;
+    unsigned int x;
+    unsigned int y;
     
 } MeshIntermediateVertex;
 
