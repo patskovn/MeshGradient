@@ -19,7 +19,7 @@ import SwiftUI
 #if canImport(UIKit)
 import UIKit
 
-public struct MeshGradient: UIViewRepresentable {
+public struct LegacyMeshGradient: UIViewRepresentable {
 	
 	private let state: MeshGradientState
 	private let subdivisions: Int
