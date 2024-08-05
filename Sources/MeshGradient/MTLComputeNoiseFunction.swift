@@ -27,6 +27,10 @@ final class MTLComputeNoiseFunction {
         guard let commandBuffer = commandQueue.makeCommandBuffer() else { return nil }
         let width = Int(viewportSize.x)
         let height = Int(viewportSize.y)
+
+        if width == 0 || height == 0 {
+            return nil
+        }
         
         if let noiseTexture = _noiseTexture, noiseTexture.width == width, noiseTexture.height == height {
             return noiseTexture
@@ -44,6 +48,11 @@ final class MTLComputeNoiseFunction {
         let threadgroups = MTLSize(width: noiseTexture.width / threadgroupCounts.width,
                                    height: noiseTexture.height / threadgroupCounts.height,
                                    depth: 1)
+
+        if threadgroups.height == 0 || threadgroups.width == 0 {
+            encoder.endEncoding()
+            return nil
+        }
         
         encoder.setComputePipelineState(pipelineState)
 
